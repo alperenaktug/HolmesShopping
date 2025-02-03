@@ -1,9 +1,13 @@
 import "./App.css";
+import Header from "./components/Header";
+import PageContainer from "./container/PageContainer";
 
 function App() {
   return (
-    <div className="text-2xl  font-bold underline text-blue-300   ">
-      Welcome to E-commerce Sites
+    <div>
+      <PageContainer>
+        <Header />
+      </PageContainer>
     </div>
   );
 }
