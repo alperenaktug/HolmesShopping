@@ -1,14 +1,15 @@
 import "./App.css";
 import Header from "./components/Header";
 import PageContainer from "./container/PageContainer";
-import ProductList from "./components/productList";
+
+import RouterConfig from "./config/RouterConfig";
 
 function App() {
   return (
     <div>
       <PageContainer>
         <Header />
-        <ProductList />
+        <RouterConfig />
       </PageContainer>
     </div>
   );
