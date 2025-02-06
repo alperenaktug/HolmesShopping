@@ -1,15 +1,17 @@
 import PropTypes from "prop-types";
 import "../css/Product.css";
-
 function Product({ product }) {
   const { id, price, image, title, description } = product;
   console.log(product);
   return (
     <div className="card">
-      <img style={{ width: 150, height: 200 }} src={image} alt="" />
+      <img className="image" src={image} alt="" />
       <div>
-        <p style={{ textAlign: "center" }}>{title}</p>
-        <h3>{price}</h3>
+        <p style={{ textAlign: "center", height: "50px" }}>{title}</p>
+        <h3>{price}₺</h3>
+      </div>
+      <div className="flex-row">
+        <button className="detail-button">Go to detail page</button>
       </div>
     </div>
   );
