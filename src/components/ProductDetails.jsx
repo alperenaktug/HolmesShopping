@@ -5,33 +5,51 @@ import { setSelectedProduct } from "../redux/slices/productSlice";
 
 function ProductDetails() {
   const { id } = useParams();
-  const dispatch = useDispatch();
   const { products, selectedProduct } = useSelector((store) => store.product);
-
-  console.log("Tüm Ürünler:", products);
-  console.log("Seçili Ürün:", selectedProduct);
+  const { price, image, title, description } = selectedProduct;
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    if (products.length > 0) {
-      const foundProduct = products.find((product) => product.id == id);
-      if (foundProduct) {
-        dispatch(setSelectedProduct(foundProduct));
-      }
-    }
-  }, [id, products, dispatch]);
+    getProductById();
+  }, []);
+
+  const getProductById = () => {
+    products &&
+      products.map((product) => {
+        if (product.id == id) {
+          dispatch(setSelectedProduct(product));
+        }
+      });
+  };
 
   return (
-    <div>
-      {selectedProduct ? (
-        <>
-          <h1>{selectedProduct.title}</h1>
-          <p>{selectedProduct.description}</p>
-        </>
-      ) : (
-        <p>Ürün bulunamadı...</p>
-      )}
+    <div
+      style={{
+        marginTop: "40px",
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "center",
+      }}
+    >
+      <div style={{ marginRight: "50px" }}>
+        <img src={image} width={250} height={400} alt="" />
+      </div>
+      <div>
+        <h1 style={{ fontFamily: "arial" }}> {title} </h1>
+        <p style={{ fontFamily: "arial", fontSize: "20px" }}> {description} </p>
+        <h1
+          style={{
+            fontSize: "40px",
+            fontFamily: "arial",
+            fontWeight: "bold",
+            color: "red",
+          }}
+        >
+          {" "}
+          {price}₺{" "}
+        </h1>
+      </div>
     </div>
   );
 }
-
 export default ProductDetails;
