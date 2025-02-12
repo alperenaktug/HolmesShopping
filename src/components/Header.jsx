@@ -7,12 +7,15 @@ import { useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { useNavigate } from "react-router";
 import Badge from "@mui/material/Badge";
+import { useDispatch, useSelector } from "react-redux";
+import { setDrawer } from "../redux/slices/basketSlice";
 
 function Header() {
   const [theme, setTheme] = useState(false);
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
-
+  const { products } = useSelector((store) => store.basket);
   const changeTheme = () => {
     const root = document.getElementById("root");
 
@@ -48,8 +51,12 @@ function Header() {
           ) : (
             <BsLightningCharge className="icon" onClick={changeTheme} />
           )}
-          <Badge badgeContent={2} color="warning">
-            <GrBasket style={{ marginRight: "10px" }} className="icon" />
+          <Badge
+            onClick={() => dispatch(setDrawer())}
+            badgeContent={products.length}
+            color="error"
+          >
+            <GrBasket style={{ marginRight: "6px" }} className="icon" />
           </Badge>
 
           <FaUserCircle style={{ marginLeft: "15px" }} className="icon" />

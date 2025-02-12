@@ -12,14 +12,15 @@ function Product({ product }) {
       <img className="image" src={image} alt="" />
       <div>
         <p style={{ textAlign: "center", height: "50px" }}>{title}</p>
-        <h3>{price}₺</h3>
+        <h3 style={{ textAlign: "center" }}>{price}₺</h3>
       </div>
+
       <div className="flex-row">
         <button
           onClick={() => navigate("/product-details/" + id)}
           className="detail-button"
         >
-          Go to detail page
+          Detayına Git
         </button>
       </div>
     </div>
