@@ -6,6 +6,7 @@ import { BsLightningCharge } from "react-icons/bs";
 import { useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { useNavigate } from "react-router";
+import Badge from "@mui/material/Badge";
 
 function Header() {
   const [theme, setTheme] = useState(false);
@@ -47,8 +48,11 @@ function Header() {
           ) : (
             <BsLightningCharge className="icon" onClick={changeTheme} />
           )}
-          <GrBasket className="icon" />
-          <FaUserCircle className="icon" />
+          <Badge badgeContent={2} color="warning">
+            <GrBasket style={{ marginRight: "10px" }} className="icon" />
+          </Badge>
+
+          <FaUserCircle style={{ marginLeft: "15px" }} className="icon" />
         </div>
       </div>
     </div>
