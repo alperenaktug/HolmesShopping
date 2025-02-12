@@ -9,7 +9,7 @@ function ProductDetails() {
   const { id } = useParams();
   const { products, selectedProduct } = useSelector((store) => store.product);
   const { price, image, title, description } = selectedProduct;
-  const [count, setCount] = useState(0); // useState doğru şekilde kullanıldı
+  const [count, setCount] = useState(0);
   const dispatch = useDispatch();
 
   const increment = () => {
@@ -64,7 +64,7 @@ function ProductDetails() {
         <div style={{ display: "flex", alignItems: "center" }}>
           <FiPlusSquare
             onClick={increment}
-            style={{ fontSize: "40px", marginRight: "5px" }}
+            style={{ fontSize: "40px", marginRight: "15px", cursor: "pointer" }}
           />
           <span
             style={{
@@ -75,7 +75,7 @@ function ProductDetails() {
           </span>
           <FiMinusSquare
             onClick={decrement}
-            style={{ fontSize: "40px", marginLeft: "5px" }}
+            style={{ fontSize: "40px", marginLeft: "15px", cursor: "pointer" }}
           />
         </div>
         <div>
